@@ -5,10 +5,34 @@
 		
 		<div id="main" class="grid_8">
 		
+			<?php
+				global $ona10_theme_options;
+				
+				$embed_codes = array();
+				// Congressional A/B
+				$embed_codes[1] = '<object width="560" height="340" id="lsplayer" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"><param name="movie" value="http://cdn.livestream.com/grid/LSPlayer.swf?channel=ona09backendsessions&amp;autoPlay=false"></param><param name="allowScriptAccess" value="always"></param><param name="allowFullScreen" value="true"></param><embed name="lsplayer" wmode="transparent" src="http://cdn.livestream.com/grid/LSPlayer.swf?channel=ona09backendsessions&amp;autoPlay=false" width="560" height="340" allowScriptAccess="always" allowFullScreen="true" type="application/x-shockwave-flash"></embed></object>';
+				// Ballroom
+				$embed_codes[2] = '<object width="560" height="340" id="lsplayer" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"><param name="movie" value="http://cdn.livestream.com/grid/LSPlayer.swf?channel=onlinenewsassociation&amp;autoPlay=false"></param><param name="allowScriptAccess" value="always"></param><param name="allowFullScreen" value="true"></param><embed name="lsplayer" wmode="transparent" src="http://cdn.livestream.com/grid/LSPlayer.swf?channel=onlinenewsassociation&amp;autoPlay=false" width="560" height="340" allowScriptAccess="always" allowFullScreen="true" type="application/x-shockwave-flash"></embed></object>';
+				// Auditorium
+				$embed_codes[3] = '<object width="560" height="340" id="lsplayer" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"><param name="movie" value="http://cdn.livestream.com/grid/LSPlayer.swf?channel=ona09frontendsessions&amp;autoPlay=false"></param><param name="allowScriptAccess" value="always"></param><param name="allowFullScreen" value="true"></param><embed name="lsplayer" wmode="transparent" src="http://cdn.livestream.com/grid/LSPlayer.swf?channel=ona09frontendsessions&amp;autoPlay=false" width="560" height="340" allowScriptAccess="always" allowFullScreen="true" type="application/x-shockwave-flash"></embed></object>';
 			
-			<?php // include("live-stream.php"); ?>
+				// Only show the livestream div if it's enabled
+				if ( $ona10_theme_options->options['livestream_embed'] ) :
+			?>
+			
+			<div class="live-stream">
+				<?php if ( $ona10_theme_options->options['livestream_title'] ) : ?>
+				<h4 class="kicker"><?php echo $ona10_theme_options->options['livestream_title']; ?></h4>
+				<?php endif; ?>
+				<div class="embed">
+					<?php echo $embed_codes[$ona10_theme_options->options['livestream_embed']]; ?>
+				</div><!-- /.embed-->
 
-		
+				<!-- <h5 class="entry-title"><a href="#">Keynote Title Can Go Here</a></h5>	 -->	
+
+			</div>
+
+			<?php endif; ?>
 			<div class="featured-area">
 				
 				<h4 class="kicker">Latest from the Student Newsroom</h4>
