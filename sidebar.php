@@ -30,7 +30,7 @@
 			    	<div class="entry-date"><abbr class="published" title="<?php the_time('Y-m-d\TH:i:sO') ?>"><?php unset($previousday); printf( __( '%1$s &#8211; %2$s', 'sandbox' ), the_date( '', '', '', false ), get_the_time() ) ?></abbr></div>
 			 	<?php endforeach; ?>
  
- 				<p class="more"><a href="http://conference.journalists.org/2010conference/category/announcements/">More updates &#0187;</a></p>
+ 				<p class="more"><a href="<?php bloginfo('url'); ?>/category/announcements/">More updates &#0187;</a></p>
 
 			</div>	
 			<!-- /.updates -->
@@ -49,7 +49,8 @@
 				<h5 class="entry-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h5>
 				<div class="entry-date"><abbr class="published" title="<?php the_time('Y-m-d\TH:i:sO') ?>"><?php unset($previousday); printf( __( '%1$s &#8211; %2$s', 'sandbox' ), the_date( '', '', '', false ), get_the_time() ) ?></abbr></div>
 			<?php endwhile; endif; ?>
-		
+			
+			<p class="more"><a href="<?php bloginfo('url'); ?>/category/newsroom/">More coverage &#0187;</a></p>
 		</div>
 			
 			
