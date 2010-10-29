@@ -22,8 +22,9 @@
 					if ( $main_feature->have_posts() ) :
 					while ( $main_feature->have_posts() ) : $main_feature->the_post();
 	 			?>
-	 			
- 				<?php postimage('medium'); ?>
+	 			<?php if ( $lead_image = get_the_post_thumbnail( $post_id, 'medium' ) ) : ?>
+					<div class="entry-image"><?php echo $lead_image; ?></div>
+				<?php endif; ?>
     		<h5 class="entry-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h5>
     		<p class="entry-byline">By <?php 
 			if ( function_exists( 'coauthors_posts_links' ) ) {
