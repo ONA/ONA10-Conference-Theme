@@ -46,18 +46,18 @@ class ONA10_Theme_Options {
 			register_setting( $this->options_group, $this->options_group_name, array( &$this, 'settings_validate' ) );
 
 			add_settings_section( 'ona10_theme_homepage_livestream', 'Homepage Livestream', array(&$this, 'settings_section'), $this->settings_page );
-			add_settings_field( 'livestream_title', 'Livestream Title', array(&$this, 'settings_livestream_title_option'), $this->settings_page, 'ona10_theme_homepage_livestream' );
 			add_settings_field( 'livestream_selector', 'Select a livestream', array(&$this, 'settings_livestream_selector_option'), $this->settings_page, 'ona10_theme_homepage_livestream' );
+			add_settings_field( 'livestream_title', 'Livestream Title', array(&$this, 'settings_livestream_title_option'), $this->settings_page, 'ona10_theme_homepage_livestream' );
 
 	}
 	
 	
 	/**
-	 * Setting for whether WinerLinks are enabled or not
+	 * Setting for the livestream title
 	 */
-	function ona10_theme_homepage_livestream() {
+	function settings_livestream_title_option() {
 		$options = $this->options;
-		echo '<input type="text" id="livestream_title" name="' . $this->options_group_name . '[livestream_title]" />';
+		echo '<input type="text" id="livestream_title" name="' . $this->options_group_name . '[livestream_title]" value="' . $options['livestream_title'] . '" size="60" />';
 	}
 	
 	/**
