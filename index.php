@@ -16,7 +16,7 @@
 				<div class="main-feature grid_4 alpha">
 				<?php
 		 			global $post;
-				 	$myposts = get_posts('numberposts=1&category=10');
+				 	$myposts = get_posts('numberposts=1&category_name=newsroom');
 		 			foreach($myposts as $post) :
 		   		setup_postdata($post);
 	 			?>
@@ -41,7 +41,7 @@
  				
 				<?php
 		 			global $post;
-				 	$myposts = get_posts('numberposts=3&category=10&offset=1');
+				 	$myposts = get_posts('numberposts=3&category_name=newsroom&offset=1');
 		 			foreach($myposts as $post) :
 		   		setup_postdata($post);
 	 			?>
@@ -49,6 +49,9 @@
 	 			<div class="secondary-feature-wrap">
 	 				<?php postimage('thumbnail'); ?>
 	    		<h5 class="entry-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h5>
+				<?php if ( $subhead = get_post_meta( get_the_id(), 'subhead', true ) ) : ?>
+					<h6 class="entry-subhead"><?php echo $subhead; ?></h6>
+				<?php endif; ?>
 	    		<p class="entry-byline">By <?php if ( function_exists( 'coauthors_posts_links' ) ) {
 					coauthors_posts_links();
             } else {
