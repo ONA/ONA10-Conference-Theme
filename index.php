@@ -75,9 +75,9 @@
 					while ( $secondary_feature->have_posts() ) : $secondary_feature->the_post();
 						$post_id = get_the_id();
 	 			?>
-	 			
-	 			<div class="secondary-feature-wrap">
-				<?php if ( $thumbnail = get_the_post_thumbnail( $post_id, array( 60, 60 ) ) ) : ?>
+	 			<?php $thumbnail = get_the_post_thumbnail( $post_id, array( 60, 60 ) );?>
+	 			<div class="secondary-feature-wrap<?php if ( $thumbnail ) echo ' thumbnail-enabled'; ?>">
+				<?php if ( $thumbnail ) : ?>
 					<div class="entry-thumbnail"><?php echo $thumbnail; ?></div>
 				<?php endif; ?>
 	    		<h5 class="entry-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h5>
