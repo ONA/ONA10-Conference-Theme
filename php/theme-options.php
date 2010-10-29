@@ -51,6 +51,10 @@ class ONA10_Theme_Options {
 
 	}
 	
+	function settings_section() {
+		
+	}
+	
 	/**
 	 * Select a livestream embed
 	 */
