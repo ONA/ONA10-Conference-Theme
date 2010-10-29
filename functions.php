@@ -9,6 +9,8 @@ SANDBOX is distributed in the hope that it will be useful, but WITHOUT ANY WARRA
 You should have received a copy of the GNU General Public License along with SANDBOX. If not, see http://www.gnu.org/licenses/.
 */
 
+include_once( 'php/theme-options.php' );
+
 /**
  * Disable KSES so we can use iframes, etc.
  * @author danielbachhuber
