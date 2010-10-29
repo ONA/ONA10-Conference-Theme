@@ -32,16 +32,6 @@ class ONA10_Theme_Options {
 
 	}
 	
-	function register_settings() {
-
-			register_setting( $this->options_group, $this->options_group_name, array( &$this, 'settings_validate' ) );
-
-			add_settings_section( 'ona10_theme_default', 'Settings', array(&$this, 'settings_section'), $this->settings_page );
-			//add_settings_field( 'enabled', 'Enable WinerLinks', array(&$this, 'settings_enabled_option'), $this->settings_page, 'winerlinks_default' );
-			//add_settings_field( 'showhide', 'Magical showy-hidey mode', array(&$this, 'settings_showhide_option'), $this->settings_page, 'winerlinks_default' );
-
-	}
-	
 	/**
 	 * Any admin menu items we need
 	 */
@@ -49,11 +39,57 @@ class ONA10_Theme_Options {
 
 		add_submenu_page( 'themes.php', 'ONA10 Theme Options', 'Theme Options', 'manage_options', 'ona10_theme_options', array( &$this, 'options_page' ) );			
 
+	}	
+	
+	function register_settings() {
+
+			register_setting( $this->options_group, $this->options_group_name, array( &$this, 'settings_validate' ) );
+
+			add_settings_section( 'ona10_theme_homepage_livestream', 'Homepage Livestream', array(&$this, 'settings_section'), $this->settings_page );
+			add_settings_field( 'livestream_title', 'Livestream Title', array(&$this, 'settings_livestream_title_option'), $this->settings_page, 'ona10_theme_homepage_livestream' );
+			add_settings_field( 'livestream_selector', 'Select a livestream', array(&$this, 'settings_livestream_selector_option'), $this->settings_page, 'ona10_theme_homepage_livestream' );
+
 	}
 	
 	
+	/**
+	 * Setting for whether WinerLinks are enabled or not
+	 */
+	function ona10_theme_homepage_livestream() {
+		$options = $this->options;
+		echo '<input type="text" id="livestream_title" name="' . $this->options_group_name . '[livestream_title]" />';
+	}
+	
+	/**
+	 * Validation and sanitization on the settings field
+	 */
+	function settings_validate( $input ) {
+
+		// Sanitize input for display_configuration
+		return $input;
+
+	}
+	
+	
+	
 	function options_page() {
-		
+		?>                                   
+		<div class="wrap">
+			<div class="icon32" id="icon-options-general"><br/></div>
+
+			<h2><?php _e('ONA10 Theme Options', 'ona10-theme-options') ?></h2>
+
+			<form action="options.php" method="post">
+
+				<?php settings_fields( $this->options_group ); ?>
+				<?php do_settings_sections( $this->settings_page ); ?>
+
+				<p class="submit"><input name="submit" type="submit" class="button-primary" value="<?php esc_attr_e('Save Changes'); ?>" /></p>
+
+			</form>
+		</div>
+
+		<?php
 	}
 	
 }
