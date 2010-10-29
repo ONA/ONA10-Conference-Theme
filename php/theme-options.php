@@ -51,6 +51,27 @@ class ONA10_Theme_Options {
 
 	}
 	
+	/**
+	 * Select a livestream embed
+	 */
+	function settings_livestream_selector_option() {
+		$options = $this->options;
+		$embed_options = array(	'None, hide the player',
+								'Congressional A/B',
+								'Ballroom',
+								'Auditorium'
+								);
+		echo '<select id="livestream_embed" name="' . $this->options_group_name . '[livestream_embed]">';
+		foreach ( $embed_options as $key => $value ) {
+			echo '<option value="' . $key . '"';
+			if ( $key == $options['livestream_embed'] ) {
+				echo ' selected="selected"';
+			}
+			echo '>' . $value . '</option>';
+		}
+		echo '</select>';
+	}
+	
 	
 	/**
 	 * Setting for the livestream title
