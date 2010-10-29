@@ -32,8 +32,17 @@ add_action( 'init', 'uh_init', 11 );
  */
 function ona10_init() {
 	
-	// Enqueue any Javascript we need
-	wp_enqueue_script( 'jquery' );
+	$details = get_theme_data(get_bloginfo('template_directory') . '/style.css');
+	$version = $details['Version'];
+	
+	if ( !is_admin() ) {
+		
+		// Enqueue any Javascript we need
+		wp_enqueue_script( 'jquery' );
+	
+		// Enqueue our stylesheets
+		wp_enqueue_style( 'ona10_primary', get_bloginfo('template_directory') . '/style/css/styles.css', false, $version);
+	}
 	
 }
 

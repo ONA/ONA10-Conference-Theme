@@ -7,7 +7,6 @@
 	<link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/style/css/reset.css" type="text/css" media="screen">
 	<link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/style/css/960.css" type="text/css" media="screen">
 	<?php if (is_home()) { ?>
-	<link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/style/css/styles.css" type="text/css" media="screen">
 	<style>
 		#menu ul.sf-menu > li.linkHome {
 			background-color: red;
@@ -16,8 +15,6 @@
 			padding-right:15px;
 			}
 	</style>
-	<?php } else { ?>
-	<link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/style/css/styles.css" type="text/css" media="screen">
 	<?php } ?>
 
 	<?php wp_head(); // For plugins ?>
