@@ -6,7 +6,7 @@
 		<div id="main" class="grid_8">
 		
 			
-			<?php include("live-stream.php"); ?>
+			<?php // include("live-stream.php"); ?>
 
 		
 			<div class="featured-area">
