@@ -15,35 +15,39 @@
 			
 				<div class="main-feature grid_4 alpha">
 				<?php
-		 			global $post;
-				 	$myposts = get_posts('numberposts=1&category_name=newsroom');
-		 			foreach($myposts as $post) :
-		   		setup_postdata($post);
+					$args = array(	'showposts' => 1,
+									'category_name' => 'featured',
+							);
+					$main_feature = new WP_Query( $args );
+					if ( $main_feature->have_posts() ) :
+					while ( $main_feature->have_posts() ) : $main_feature->the_post();
 	 			?>
 	 			
  				<?php postimage('medium'); ?>
     		<h5 class="entry-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h5>
     		<p class="entry-byline">By <?php 
-      		        if (function_exists( 'coauthors_posts_links' ) ) {
-            coauthors_posts_links();
+			if ( function_exists( 'coauthors_posts_links' ) ) {
+            	coauthors_posts_links();
             } else {
-           
-            the_author_posts_link();
+            	the_author_posts_link();
             }
     		?></p>
     		<div class="entry-excerpt"><?php the_excerpt(); ?></div>
     		
- 				<?php endforeach; ?>
+ 				<?php endwhile;endif; ?>
  				</div>
  				<!-- /.main-feature -->
  				
  				<div class="secondary-feature grid_4 omega">
  				
 				<?php
-		 			global $post;
-				 	$myposts = get_posts('numberposts=3&category_name=newsroom&offset=1');
-		 			foreach($myposts as $post) :
-		   		setup_postdata($post);
+		 			$args = array(	'showposts' => 3,
+									'category_name' => 'featured',
+									'offset' => 1
+							);
+					$secondary_feature = new WP_Query( $args );
+					if ( $secondary_feature->have_posts() ) :
+					while ( $secondary_feature->have_posts() ) : $secondary_feature->the_post();
 	 			?>
 	 			
 	 			<div class="secondary-feature-wrap">
@@ -60,7 +64,7 @@
 			?></p>
     		</div>
     		<!-- /.secondary-feature-wrap -->
- 				<?php endforeach; ?> 				
+ 				<?php endwhile;endif; ?> 				
  				 				
  				</div>	
  				<!-- /.secondary-feature -->
