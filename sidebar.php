@@ -36,6 +36,23 @@
 			<!-- /.updates -->
 			
 			
+		<div class="prior container">
+			<h3>Prior Coverage</h3>
+			<?php
+				$args = array(	'showposts' => 5,
+								'category_name' => 'newsroom',
+						);
+				$prior_coverage = new WP_Query( $args );
+				if ( $prior_coverage->have_posts() ) :
+				while ( $prior_coverage->have_posts() ) : $prior_coverage->the_post();
+			?>
+				<h5 class="entry-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h5>
+				<div class="entry-date"><abbr class="published" title="<?php the_time('Y-m-d\TH:i:sO') ?>"><?php unset($previousday); printf( __( '%1$s &#8211; %2$s', 'sandbox' ), the_date( '', '', '', false ), get_the_time() ) ?></abbr></div>
+			<?php endwhile; endif; ?>
+		
+		</div>
+			
+			
 			
 					
 			

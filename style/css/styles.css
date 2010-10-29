@@ -269,7 +269,7 @@ h2 {
 	text-indent: -5000px;
 }
 
-.container.updates h2 {
+.container.updates h2, .container.prior h2 {
 	background: url(../img/header-sprite.gif) 0 -450px no-repeat;
 	height: 24px;
 	text-indent: -5000px;
@@ -281,7 +281,7 @@ h2 {
 	text-indent: -5000px;
 }
 
-.container.updates .entry-date {
+.container.updates .entry-date, .container.prior .entry-date {
 	font-family: Helvetica, Arial, sans-serif;
 	font-size: 10px;
 	color: #A9A094;
@@ -289,7 +289,7 @@ h2 {
 	margin-bottom: 10px;
 }
 
-.container.updates .entry-meta {
+.container.updates .entry-meta, .container.prior .entry-meta {
 	font-family: Helvetica, Arial, sans-serif;
 	font-size: 10px;
 	color: #A9A094;
