@@ -48,6 +48,9 @@ function ona10_init() {
 
 add_action( 'init', 'ona10_init', 12 );
 
+// Add support for post thumbnails
+add_theme_support( 'post-thumbnails' );
+
 // Produces a list of pages in the header without whitespace
 function sandbox_globalnav() {
 	if ( $menu = str_replace( array( "\r", "\n", "\t" ), '', wp_list_pages('title_li=&sort_column=menu_order&echo=0') ) )
