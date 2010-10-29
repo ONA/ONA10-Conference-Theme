@@ -48,10 +48,13 @@
 					$secondary_feature = new WP_Query( $args );
 					if ( $secondary_feature->have_posts() ) :
 					while ( $secondary_feature->have_posts() ) : $secondary_feature->the_post();
+						$post_id = get_the_id();
 	 			?>
 	 			
 	 			<div class="secondary-feature-wrap">
-	 				<?php postimage('thumbnail'); ?>
+				<?php if ( $thumbnail = get_the_post_thumbnail( $post_id, array( 60, 60 ) ) ) : ?>
+					<div class="entry-thumbnail"><?php echo $thumbnail; ?></div>
+				<?php endif; ?>
 	    		<h5 class="entry-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h5>
 				<?php if ( $subhead = get_post_meta( get_the_id(), 'subhead', true ) ) : ?>
 					<h6 class="entry-subhead"><?php echo $subhead; ?></h6>
